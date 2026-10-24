@@ -1,0 +1,90 @@
+-- CRIAR BANCO DE DADOS
+
+CREATE DATABASE IF NOT EXISTS nome_banco;
+
+USE nome_banco;
+
+
+
+-- Criar tabela
+
+CREATE TABLE nome_tabela1(
+
+id_nome_tabela1 INT AUTO_INCREMENT PRIMARY KEY,
+
+nome_coluna1 VARCHAR(100) NOT NULL
+
+);
+
+ 
+
+-- Criar tabela com chave estrangeira
+
+CREATE TABLE nome_tabela2(
+
+id_nome_tabela2 INT AUTO_INCREMENT PRIMARY KEY,
+
+nome_coluna2 VARCHAR(100) NOT NULL,
+
+nome_tabela1_id INT,
+
+FOREIGN KEY (nome_tabela1_id) REFERENCES nome_tabela1(id_nome_tabela1)
+
+);
+
+
+
+-- ATUALIZAR TABELA
+
+-- Adicionar coluna
+
+ALTER TABLE nome_tabela
+
+ADD COLUMN nome_coluna tipo_dado;
+
+ALTER TABLE nome_tabela_filha
+ADD CONSTRAINT nome_da_fk
+FOREIGN KEY (coluna_local)
+REFERENCES nome_tabela_pai (coluna_primaria);
+
+-- Modificar tipo da coluna
+
+ALTER TABLE nome_tabela
+
+MODIFY COLUMN nome_coluna tipo_dado;
+
+ 
+
+-- Mudar nome da coluna
+
+ALTER TABLE nome_tabela
+
+CHANGE COLUMN nome_coluna_antigo nome_coluna_novo tipo_dado;
+
+ 
+
+-- Remover coluna
+
+ALTER TABLE nome_tabela
+
+DROP COLUMN nome_coluna;
+
+ 
+
+-- Excluir banco de dados
+
+DROP DATABASE nome_banco;
+
+
+
+-- Insert 
+
+INSERT INTO nome_tabela(col1, col2, col3) VALUES ('valor1','valor2','valor3');
+
+ -- Select
+
+SELECT * FROM nome_tabela WHERE  id = 1
+
+-- Delete
+
+DELETE FROM nome_tabela WHERE  id = 1
